@@ -72,7 +72,7 @@ class TelegraphHelper:
                     nxt_page += 1
             await self.edit_page(
                 path=path[prev_page],
-                title='Jmdkh-mltb Torrent Search',
+                title='Bawera-Nitijana Multi Search',
                 content=content
             )
         return
