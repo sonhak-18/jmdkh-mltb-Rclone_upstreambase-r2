@@ -87,5 +87,5 @@ class TelegraphHelper:
 
 
 telegraph = TelegraphHelper(
-    'Jmdkh-mltb', 'https://github.com/junedkh/jmdkh-mltb')
+    'Bawera-Nitijana-Mirror', 'https://github.com/junedkh/jmdkh-mltb')
 bot_loop.run_until_complete(telegraph.create_account())
