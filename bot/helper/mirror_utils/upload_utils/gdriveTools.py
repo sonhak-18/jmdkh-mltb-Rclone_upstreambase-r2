@@ -395,7 +395,7 @@ class GoogleDriveHelper:
                 dir_id = gdrive_id
                 file = self.__copyFile(
                     meta.get('id'), dir_id)
-                msg += f'<b>📁 Name: </b><code>{file.get("name")}</code>'
+                msg += f'<b>Name: </b><code>{file.get("name")}</code>'
                 durl = self.__G_DRIVE_BASE_DOWNLOAD_URL.format(file.get("id"))
                 if mime_type is None:
                     mime_type = 'File'
@@ -573,14 +573,14 @@ class GoogleDriveHelper:
                 msg += f'<h4>Search Result For {fileName}</h4>'
                 Title = True
             if drive_name:
-                msg += f"❏ <b>Drive Path: {drive_name}</b><br><br>"
+                msg += f"╾────────────╼<br><b>{drive_name}</b><br>╾────────────╼<br>"
             for file in response.get('files', []):
                 mime_type = file.get('mimeType')
                 if mime_type == "application/vnd.google-apps.folder":
                     if SHORTENERES:
-                        msg += f"📁 .<b>{file.get('name').replace(' ', '-').replace('.', ',')}<br>(folder)</b><br>"
+                        msg += f"📁 .<code>{file.get('name').replace(' ', '-').replace('.', ',')}<br>(folder)</code><br>"
                     else:
-                        msg += f"📁 <b>{file.get('name')}<br>(folder)</b><br>"
+                        msg += f"📁 <code>{file.get('name')}<br>(folder)</code><br>"
                     if not config_dict['DISABLE_DRIVE_LINK']:
                         furl = short_url(
                             f"https://drive.google.com/drive/folders/{file.get('id')}")
@@ -605,9 +605,9 @@ class GoogleDriveHelper:
                                    f"</a> (shortcut)"
                 else:
                     if SHORTENERES:
-                        msg += f"📁 <b>{file.get('name').replace(' ', '-').replace('.', ',')}<br>📦 ({get_readable_file_size(int(file.get('size', 0)))})</b><br>"
+                        msg += f"📄 <code>{file.get('name').replace(' ', '-').replace('.', ',')}<br>({get_readable_file_size(int(file.get('size', 0)))})</code><br>"
                     else:
-                        msg += f"📁 <b>{file.get('name')}<br>📦 ({get_readable_file_size(int(file.get('size', 0)))})</code><br>"
+                        msg += f"📄 <code>{file.get('name')}<br>({get_readable_file_size(int(file.get('size', 0)))})</code><br>"
                     if not config_dict['DISABLE_DRIVE_LINK']:
                         furl = short_url(
                             f"https://drive.google.com/uc?id={file.get('id')}&export=download")
