@@ -605,9 +605,9 @@ class GoogleDriveHelper:
                                    f"</a> (shortcut)"
                 else:
                     if SHORTENERES:
-                        msg += f"📄 <code>{file.get('name').replace(' ', '-').replace('.', ',')}<br>({get_readable_file_size(int(file.get('size', 0)))})</code><br>"
+                        msg += f"📁 <b>{file.get('name').replace(' ', '-').replace('.', ',')}<br>📦 ({get_readable_file_size(int(file.get('size', 0)))})</b><br>"
                     else:
-                        msg += f"📄 <code>{file.get('name')}<br>({get_readable_file_size(int(file.get('size', 0)))})</code><br>"
+                        msg += f"📁 <b>{file.get('name')}<br>📦 ({get_readable_file_size(int(file.get('size', 0)))})</b><br>"
                     if not config_dict['DISABLE_DRIVE_LINK']:
                         furl = short_url(
                             f"https://drive.google.com/uc?id={file.get('id')}&export=download")
