@@ -367,13 +367,13 @@ class MirrorLeechListener:
             await DbManger().rm_complete_task(self.message.link)
         LOGGER.info(f'Task Done: {name}')
         if self.isLeech:
-            msg = f'<b>Name</b>: <code>{escape(name)}</code>\n\n<b>Size</b>: {get_readable_file_size(size)}'
-            msg += f'\n<b>Total Files</b>: {folders}'
-            msg += f"\n<b>Elapsed</b>: {get_readable_time(time() - self.extra_details['startTime'])}"
+            msg = f'<b>📁 Name</b>: <code>{escape(name)}</code>\n<b>📦 Size</b>: {get_readable_file_size(size)}'
+            msg += f'\n<b>📂 Total Files</b>: {folders}'
+            msg += f"\n<b>⏳ Elapsed</b>: {get_readable_time(time() - self.extra_details['startTime'])}"
             if mime_type != 0:
-                msg += f'\n<b>Corrupted Files</b>: {mime_type}'
-            msg += f'\n<b>#cc</b>: {self.tag}'
-            msg += f"\n<b>Upload</b>: {self.extra_details['mode']}\n\n"
+                msg += f'\n<b>🗑 Corrupted Files</b>: {mime_type}'
+            msg += f'\n<b>👤 User</b>: {self.tag}'
+            msg += f"\n<b>📤 Upload</b>: {self.extra_details['mode']}\n"
             if not files:
                 await sendMessage(self.message, msg)
                 if self.logMessage:
@@ -412,18 +412,18 @@ class MirrorLeechListener:
                 return
         else:
             if SHORTENERES:
-                msg = f'<b>Name</b>: <code>.{escape(name).replace(" ", "-").replace(".", ",")}</code>\n\n<b>Size</b>: {get_readable_file_size(size)}'
+                msg = f'<b>📁 Name</b>: <code>.{escape(name).replace(" ", "-").replace(".", ",")}</code>\n<b>📦 Size</b>: {get_readable_file_size(size)}'
             else:
-                msg = f'<b>Name</b>: <code>{escape(name)}</code>\n\n<b>Size</b>: {get_readable_file_size(size)}'
-            msg += f'\n\n<b>Type: </b>{mime_type}'
+                msg = f'<b>📁 Name</b>: <code>{escape(name)}</code>\n<b>📦 Size</b>: {get_readable_file_size(size)}'
+            msg += f'\n<b>🏷 Type: </b>{mime_type}'
             if mime_type == "Folder":
-                msg += f'\n<b>SubFolders: </b>{folders}'
-                msg += f'\n<b>Files: </b>{files}'
-            msg += f'\n\n<b>#cc</b>: {self.tag} | <b>Elapsed</b>: {get_readable_time(time() - self.extra_details["startTime"])}'
+                msg += f'\n<b>📂 SubFolders: </b>{folders}'
+                msg += f'\n<b>🗂 Files: </b>{files}'
+            msg += f'\n<b>👤 User</b>: {self.tag} | <b>⏳ Elapsed</b>: {get_readable_time(time() - self.extra_details["startTime"])}'
             msg += f"\n\n<b>Upload</b>: {self.extra_details['mode']}"
             if link or rclonePath and config_dict['RCLONE_SERVE_URL']:
                 if drive_id and config_dict['GDRIVE_ID'] != drive_id:
-                    msg += f"\n\n<b>Folder id</b>: <code>{drive_id}</code>"
+                    msg += f"\n<b>ℹ️ Folder id</b>: <code>{drive_id}</code>"
                 buttons = ButtonMaker()
                 if link:
                     if not config_dict['DISABLE_DRIVE_LINK']:
