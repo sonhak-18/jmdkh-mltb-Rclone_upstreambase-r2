@@ -611,7 +611,7 @@ class GoogleDriveHelper:
                     if not config_dict['DISABLE_DRIVE_LINK']:
                         furl = short_url(
                             f"https://drive.google.com/uc?id={file.get('id')}&export=download")
-                        msg += f"<b><a href={furl}>🔐 Drive Link</a></b>"
+                        msg += f"<b>🔐 <a href={furl}>Drive Link</a></b>"
                     if index_url:
                         if isRecur:
                             url_path = "/".join(rquote(n, safe='')
