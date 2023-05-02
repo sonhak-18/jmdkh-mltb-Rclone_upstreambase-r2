@@ -603,7 +603,7 @@ class GoogleDriveHelper:
                         f"</a> (shortcut)"
                 else:
                     furl = f"https://drive.google.com/uc?id={file.get('id')}&export=download"
-                    msg += f"📄📁 <b>{file.get('name')}<br>📦 ({get_readable_file_size(int(file.get('size', 0)))})</b><br>"
+                    msg += f"📁 <b>{file.get('name')}<br>📦 ({get_readable_file_size(int(file.get('size', 0)))})</b><br>"
                     msg += f"<b><a href={furl}>Drive Link</a></b> | "
                     if index_url:
                         if isRecur:
