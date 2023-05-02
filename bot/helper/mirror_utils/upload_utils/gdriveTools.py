@@ -401,7 +401,7 @@ class GoogleDriveHelper:
                 dir_id = gdrive_id
                 file = self.__copyFile(
                     meta.get('id'), dir_id)
-                msg += f'<b>Name: </b><code>{file.get("name")}</code>'
+                msg += f'<b>📁 Name: </b><code>{file.get("name")}</code>'
                 durl = self.__G_DRIVE_BASE_DOWNLOAD_URL.format(file.get("id"))
                 if mime_type is None:
                     mime_type = 'File'
@@ -602,7 +602,7 @@ class GoogleDriveHelper:
                         f"</a> (shortcut)"
                 else:
                     furl = f"https://drive.google.com/uc?id={file.get('id')}&export=download"
-                    msg += f"📄 <code>{file.get('name')}<br>({get_readable_file_size(int(file.get('size', 0)))})</code><br>"
+                    msg += f"📁 <b>{file.get('name')}<br>📦 ({get_readable_file_size(int(file.get('size', 0)))})</b><br>"
                     if not config_dict['DISABLE_DRIVE_LINK']:
                         msg += f"<b><a href={furl}>Drive Link</a></b> | "
                     if index_url:

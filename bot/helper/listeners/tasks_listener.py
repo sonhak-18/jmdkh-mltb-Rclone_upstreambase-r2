@@ -366,11 +366,11 @@ class MirrorLeechListener:
             await DbManger().remove_download(self.raw_url)
         if self.isSuperGroup and config_dict['INCOMPLETE_TASK_NOTIFIER'] and DATABASE_URL:
             await DbManger().rm_complete_task(self.message.link)
-        msg = f"<b>Name: </b><code>{escape(name)}</code>\n\n<b>Size: </b>{get_readable_file_size(size)}"
+        msg = f"<b>📁 Name: </b><code>{escape(name)}</code>\n<b>📦 Size: </b>{get_readable_file_size(size)}"
         LOGGER.info(f'Task Done: {name}')
         if self.isLeech:
-            msg += f'\n<b>Total Files</b>: {folders}'
-            msg += f"\n<b>Elapsed</b>: {get_readable_time(time() - self.extra_details['startTime'])}"
+            msg += f'\n<b>🗃 Total Files</b>: {folders}'
+            msg += f"\n<b>⏳ Elapsed</b>: {get_readable_time(time() - self.extra_details['startTime'])}"
             if mime_type != 0:
                 msg += f'\n<b>🗑 Corrupted Files</b>: {mime_type}'
             msg += f'\n<b>👤 User</b>: {self.tag}'
@@ -412,7 +412,7 @@ class MirrorLeechListener:
                 await start_from_queued()
                 return
         else:
-            msg += f'\n\n<b>Type: </b>{mime_type}'
+            msg += f'\n<b>🏷 Type: </b>{mime_type}'
             if mime_type == "Folder":
                 msg += f'\n<b>📂 SubFolders: </b>{folders}'
                 msg += f'\n<b>🗂 Files: </b>{files}'
